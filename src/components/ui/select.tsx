@@ -13,6 +13,7 @@ interface SelectProps {
   placeholder?: string;
   disabled?: boolean;
   className?: string;
+  testId?: string;
 }
 
 export const SelectInput: React.FC<SelectProps> = ({
@@ -21,7 +22,8 @@ export const SelectInput: React.FC<SelectProps> = ({
   onSelect,
   placeholder = "Select an option",
   disabled = false,
-  className = "",
+  testId,
+  className,
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
@@ -31,6 +33,7 @@ export const SelectInput: React.FC<SelectProps> = ({
   return (
     <div className='relative'>
       <select
+        data-testid={testId}
         value={value ?? ""}
         onChange={handleChange}
         disabled={disabled}

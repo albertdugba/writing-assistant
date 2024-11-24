@@ -8,7 +8,6 @@ interface InputControlsProps {
   length: string;
   onToneChange: (value: Option["value"]) => void;
   onLengthChange: (value: Option["value"]) => void;
-  onClick: () => void;
   isLoading?: boolean;
 }
 
@@ -17,13 +16,13 @@ export const InputControls = ({
   length,
   onToneChange,
   onLengthChange,
-  onClick,
   isLoading,
 }: InputControlsProps) => {
   return (
     <div className='flex items-center gap-3 justify-between bg-gray-50 rounded-lg p-4'>
       <div className='flex items-center gap-2'>
         <SelectInput
+          testId='tone-select'
           options={TONE_OPTIONS}
           onSelect={onToneChange}
           value={tone}
@@ -31,6 +30,7 @@ export const InputControls = ({
         />
 
         <SelectInput
+          testId='length-select'
           options={LENGTH_OPTIONS}
           onSelect={onLengthChange}
           value={length}
@@ -40,10 +40,8 @@ export const InputControls = ({
 
       <div>
         <Button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={onClick}
-          className='flex items-center px-4 py-1.5 bg-primary text-white rounded-lg text-sm font-medium'
+          data-testid='rewrite-btn'
+          type='submit'
           disabled={isLoading}
           isLoading={isLoading}
         >

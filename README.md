@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Writing Assistant
 
-## Getting Started
 
-First, run the development server:
+## 🛠️ Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js** - React framework for server-side rendering and API integration.
+- **Tailwind CSS** - Utility-first CSS framework for styling.
+- **OpenAI API SDK** - To generate responses based on user input.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🖥️ Setup and Installation
+Follow these steps to set up the project locally:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+   cd your-repository
+   ```
+2. **Install Dependencies:** Ensure you have pnpm installed, then run:
+   ```bash
+    pnpm install
+   ```
+3. **Set Up OpenAI API Key::**
+   Create an OpenAI account and generate an API key by visiting the OpenAI API Key page.
+   Create an .env.local and add OPENAI_API with your actual key:
+   ```bash
+   OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+   ```
+4. **Run the Development Server:** Start the Next.js development server
+   ```bash
+   pnpm install
+   ```
 
-## Learn More
+## 🌐 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+To deploy this application on **Vercel**, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Login to Vercel**: Go to [vercel.com](https://vercel.com/) and log in with your GitHub account.
+2. **Import Your Project**: Select your GitHub repository and configure the project.
+3. **Set Environment Variables**: Add `OPENAI_API_KEY` in the project settings with your OpenAI API key.
+4. **Deploy**: Vercel will automatically build and deploy your project. Once complete, your app will be live at the provided URL.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { STORAGE_KEY } from "~/constants";
 import { persistToStorage } from "~/lib/storage";
-import { retrieveData } from "~/service";
+import { rewriteRequest } from "~/service";
 
 type RewritePayload = {
   content: string;
@@ -44,7 +44,7 @@ export const useRewrite = ({ initialHistory = [] }: UseRewriteProps) => {
     setIsSuccess(false);
 
     try {
-      const response = await retrieveData(payload);
+      const response = await rewriteRequest(payload);
       setRewritten(response.text);
       updateHistory(response.text);
 

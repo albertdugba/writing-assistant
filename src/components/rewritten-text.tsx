@@ -39,7 +39,9 @@ export function RewrittenTextComponent({
               Explain
             </Button>
           </div>
-          <p className='text-gray-800'>{text}</p>
+          <p className='text-gray-800' data-testid='output'>
+            {text}
+          </p>
 
           {explanationText && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>

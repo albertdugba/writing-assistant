@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { TextArea } from "~/components/ui/textarea";
@@ -31,7 +31,8 @@ const WritingAssistant = () => {
     explanation,
   } = useExplain();
 
-  const handleRewrite = async () => {
+  const handleRewrite = async (e: FormEvent) => {
+    e.preventDefault();
     if (!input.trim()) return;
 
     const payload = {
@@ -59,7 +60,7 @@ const WritingAssistant = () => {
             className='max-w-4xl mx-auto space-y-8 w-full'
           >
             <div className='bg-white rounded-xl w-full'>
-              <div className='p-6'>
+              <form className='p-6' onSubmit={handleRewrite}>
                 <h1 className='text-2xl font-bold mb-6'>
                   AI Writing Assistant
                 </h1>
@@ -72,13 +73,12 @@ const WritingAssistant = () => {
 
                 <InputControls
                   length={length}
-                  onClick={handleRewrite}
                   onLengthChange={setLength}
                   onToneChange={setTone}
                   tone={tone}
                   isLoading={isLoading}
                 />
-              </div>
+              </form>
 
               <RewrittenTextComponent
                 isLoading={isExplanationLoading}

@@ -1,7 +1,7 @@
 type ApiResponse = {
   text: string;
 };
-export async function retrieveData<T>(payload: T): Promise<ApiResponse> {
+export async function rewriteRequest<T>(payload: T): Promise<ApiResponse> {
   const response = await fetch("/api/chat", {
     method: "POST",
     body: JSON.stringify(payload),
