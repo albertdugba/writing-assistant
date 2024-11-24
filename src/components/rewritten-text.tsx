@@ -17,7 +17,6 @@ export function RewrittenTextComponent({
   onClick,
   explanationText,
 }: Props) {
-  console.log("explanationText", explanationText);
   return (
     <AnimatePresence>
       {isSuccess && (
@@ -27,7 +26,7 @@ export function RewrittenTextComponent({
           transition={{ type: "spring", duration: 0.4, bounce: 0 }}
           className='border-t bg-gray-50 p-6 rounded-b-xl'
         >
-          <div className='flex items-center justify-between'>
+          <div className='flex items-center justify-between mb-2'>
             <h3 className='font-semibold mb-2 text-gray-700'>
               Rewritten Text:
             </h3>
@@ -41,13 +40,14 @@ export function RewrittenTextComponent({
             </Button>
           </div>
           <p className='text-gray-800'>{text}</p>
+
           {explanationText && (
-            <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <div className='w-full h-[1px] bg-gray-300 mt-2' />
-              <blockquote className='mt-3'>
+              <motion.blockquote layoutId={explanationText} className='mt-3'>
                 <em>{explanationText}</em>
-              </blockquote>
-            </>
+              </motion.blockquote>
+            </motion.div>
           )}
         </motion.div>
       )}

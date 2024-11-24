@@ -23,6 +23,7 @@ export const useRewrite = ({ initialHistory = [] }: UseRewriteProps) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [history, setHistory] = useState<HistoryItem[]>(initialHistory);
   const [rewritten, setRewritten] = useState<string>("");
+  const [isError, setIsError] = useState<unknown>();
 
   const updateHistory = (text: string) => {
     const newHistoryItem = { text, timestamp: new Date() };
@@ -51,6 +52,7 @@ export const useRewrite = ({ initialHistory = [] }: UseRewriteProps) => {
       setIsLoading(false);
       return response;
     } catch (error) {
+      setIsError(error);
       setIsSuccess(false);
       setIsLoading(false);
 
@@ -65,5 +67,6 @@ export const useRewrite = ({ initialHistory = [] }: UseRewriteProps) => {
     history,
     rewritten,
     onDelete,
+    isError,
   };
 };

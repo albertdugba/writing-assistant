@@ -21,8 +21,8 @@ export const InputControls = ({
   isLoading,
 }: InputControlsProps) => {
   return (
-    <div className='flex items-center gap-3 justify-between bg-gray-50 rounded-lg p-2'>
-      <div className='flex gap-2'>
+    <div className='flex items-center gap-3 justify-between bg-gray-50 rounded-lg p-4'>
+      <div className='flex items-center gap-2'>
         <SelectInput
           options={TONE_OPTIONS}
           onSelect={onToneChange}
