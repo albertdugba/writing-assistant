@@ -1,6 +1,6 @@
 # AI Writing Assistant
 
-
+``
 ## 🛠️ Technologies Used
 
 - **Next.js** - React framework for server-side rendering and API integration.
@@ -15,15 +15,15 @@ Follow these steps to set up the project locally:
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   cd writing-assistant
    ```
 2. **Install Dependencies:** Ensure you have pnpm installed, then run:
    ```bash
     pnpm install
    ```
 3. **Set Up OpenAI API Key::**
-   Create an OpenAI account and generate an API key by visiting the OpenAI API Key page.
-   Create an .env.local and add OPENAI_API with your actual key:
+   1. Create an OpenAI account and generate an API key by visiting the OpenAI API Key page.
+   2. Create an .env.local and add OPENAI_API with your actual key:
    ```bash
    OPENAI_API_KEY=YOUR_OPENAI_API_KEY
    ```
