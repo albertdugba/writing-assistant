@@ -5,8 +5,8 @@ export const TONE_OPTIONS = [
   { label: "Professional", value: "professional" },
   { label: "Formal", value: "formal" },
 ];
+
 export const LENGTH_OPTIONS = [
   { label: "Shorter", value: "shorter" },
   { label: "Longer", value: "longer" },
-  //   { label: "Shorter", value: "shorter" },
 ];

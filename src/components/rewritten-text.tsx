@@ -1,13 +1,23 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Button } from "./ui/button";
 
 interface Props {
   isSuccess: boolean;
   isLoading: boolean;
   text: string;
+  onClick: () => void;
+  explanationText: string;
 }
 
-export function RewrittenTextComponent({ isSuccess, text }: Props) {
+export function RewrittenTextComponent({
+  isLoading,
+  isSuccess,
+  text,
+  onClick,
+  explanationText,
+}: Props) {
+  console.log("explanationText", explanationText);
   return (
     <AnimatePresence>
       {isSuccess && (
@@ -22,11 +32,23 @@ export function RewrittenTextComponent({ isSuccess, text }: Props) {
               Rewritten Text:
             </h3>
 
-            <button className='flex items-center px-4 py-1.5 bg-primary text-white rounded-lg text-sm font-medium'>
+            <Button
+              isLoading={isLoading}
+              onClick={onClick}
+              className='flex items-center px-4 py-1.5 bg-primary text-white rounded-lg text-sm font-medium'
+            >
               Explain
-            </button>
+            </Button>
           </div>
           <p className='text-gray-800'>{text}</p>
+          {explanationText && (
+            <>
+              <div className='w-full h-[1px] bg-gray-300 mt-2' />
+              <blockquote className='mt-3'>
+                <em>{explanationText}</em>
+              </blockquote>
+            </>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

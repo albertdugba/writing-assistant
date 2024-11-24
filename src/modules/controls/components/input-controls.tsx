@@ -3,7 +3,7 @@ import { Button } from "~/components/ui/button";
 import { Option, SelectInput } from "~/components/ui/select";
 import { LENGTH_OPTIONS, TONE_OPTIONS } from "~/constants";
 
-interface WritingAssistantInputProps {
+interface InputControlsProps {
   tone: string;
   length: string;
   onToneChange: (value: Option["value"]) => void;
@@ -12,16 +12,16 @@ interface WritingAssistantInputProps {
   isLoading?: boolean;
 }
 
-export const WritingAssistantInput = ({
+export const InputControls = ({
   tone,
   length,
   onToneChange,
   onLengthChange,
   onClick,
   isLoading,
-}: WritingAssistantInputProps) => {
+}: InputControlsProps) => {
   return (
-    <div className='flex items-center gap-3 border justify-between bg-gray-50 rounded-lg p-2'>
+    <div className='flex items-center gap-3 justify-between bg-gray-50 rounded-lg p-2'>
       <div className='flex gap-2'>
         <SelectInput
           options={TONE_OPTIONS}
@@ -34,7 +34,7 @@ export const WritingAssistantInput = ({
           options={LENGTH_OPTIONS}
           onSelect={onLengthChange}
           value={length}
-          className='appearance-none py-1.5 bg-white border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+          className='appearance-none mr-4 py-1.5 bg-white border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent'
         />
       </div>
 

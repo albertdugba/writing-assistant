@@ -2,16 +2,18 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { WritingAssistantInput } from "~/modules/text-assistant/components/writing-input";
 import { TextArea } from "~/components/ui/textarea";
-import { HistoryData } from "~/modules/text-assistant/history/components/history-data";
 import { STORAGE_KEY } from "~/constants";
 import { getItemFromStorage } from "~/lib/storage";
 import { RewrittenTextComponent } from "~/components/rewritten-text";
 import { HistoryItem, useRewrite } from "~/hooks/useRewrite";
+import { HistoryData } from "~/modules/history/components/history-data";
+import { InputControls } from "~/modules/controls";
+import { useExplain } from "~/hooks/useExplain";
 
 const WritingAssistant = () => {
   const [input, setInput] = useState("");
+  const [original, setOriginal] = useState("");
   const [tone, setTone] = useState("formal");
   const [length, setLength] = useState("same");
 
@@ -23,6 +25,12 @@ const WritingAssistant = () => {
       initialHistory: initialHistory(),
     });
 
+  const {
+    explain,
+    isLoading: isExplanationLoading,
+    explanation,
+  } = useExplain();
+
   const handleRewrite = async () => {
     if (!input.trim()) return;
 
@@ -31,9 +39,14 @@ const WritingAssistant = () => {
       tone,
       length,
     };
+    setOriginal(input);
     await rewrite(payload);
 
     setInput("");
+  };
+
+  const handleExplain = async () => {
+    await explain({ original, rewritten });
   };
 
   return (
@@ -45,7 +58,7 @@ const WritingAssistant = () => {
             animate={{ opacity: 1, y: 0 }}
             className='max-w-4xl mx-auto space-y-8 w-full'
           >
-            <div className='bg-white rounded-xl border w-full'>
+            <div className='bg-white rounded-xl w-full'>
               <div className='p-6'>
                 <h1 className='text-2xl font-bold mb-6'>
                   AI Writing Assistant
@@ -57,7 +70,7 @@ const WritingAssistant = () => {
                   rows={5}
                 />
 
-                <WritingAssistantInput
+                <InputControls
                   length={length}
                   onClick={handleRewrite}
                   onLengthChange={setLength}
@@ -68,9 +81,11 @@ const WritingAssistant = () => {
               </div>
 
               <RewrittenTextComponent
-                isLoading={isLoading}
+                isLoading={isExplanationLoading}
+                explanationText={explanation}
                 isSuccess={isSuccess}
                 text={rewritten}
+                onClick={handleExplain}
               />
             </div>
 

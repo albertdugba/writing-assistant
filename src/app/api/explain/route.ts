@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
 export async function POST(req: Request) {
-  const { content, length, tone } = await req.json();
+  const { original, rewritten } = await req.json();
 
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API,
@@ -13,14 +13,15 @@ export async function POST(req: Request) {
     messages: [
       {
         role: "system",
-        content: `You are a helpful assistant that rewrites whatever the user types in the prompt. Your responses should be written in a ${tone} tone and should be ${length} in length.`,
+        content: `You are a helpful assistant that explains how a rewritten text improves the original version. Provide clear and insightful feedback.`,
       },
       {
         role: "user",
-        content,
+        content: `Original: "${original}"\nRewritten: "${rewritten}"`,
       },
     ],
   });
+
   return NextResponse.json({
     text: completion.choices[0].message.content,
   });
