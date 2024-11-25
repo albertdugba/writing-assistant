@@ -30,7 +30,7 @@ export const HistoryData = (props: HistoryDataProps) => {
         </Button>
       </div>
 
-      <div className='flex-grow overflow-y-auto space-y-2'>
+      <div className='flex-grow overflow-y-auto space-y-2 '>
         <AnimatePresence initial={false}>
           {history
             .sort(
@@ -44,7 +44,7 @@ export const HistoryData = (props: HistoryDataProps) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className='rounded-lg p-4 mb-4 last:mb-0 hover:bg-gray-50 transition-colors'
+                className='rounded-lg p-4 mb-4 last:mb-0 hover:bg-gray-50 transition-colors border-b border-gray-200 last:border-b-0'
               >
                 <div className='flex justify-between items-center space-x-10'>
                   <p className='flex-grow'>{item.text}</p>
