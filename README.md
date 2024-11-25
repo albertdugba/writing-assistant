@@ -1,6 +1,9 @@
 # AI Writing Assistant
 
-``
+![Website](./public/app.png)
+
+[Visit site](https://writing-assistant-iota.vercel.app/)
+
 ## 🛠️ Technologies Used
 
 - **Next.js** - React framework for server-side rendering and API integration.
@@ -10,6 +13,7 @@
 ---
 
 ## 🖥️ Setup and Installation
+
 Follow these steps to set up the project locally:
 
 1. **Clone the Repository:**
@@ -40,4 +44,3 @@ To deploy this application on **Vercel**, follow these steps:
 2. **Import Your Project**: Select your GitHub repository and configure the project.
 3. **Set Environment Variables**: Add `OPENAI_API_KEY` in the project settings with your OpenAI API key.
 4. **Deploy**: Vercel will automatically build and deploy your project. Once complete, your app will be live at the provided URL.
-
