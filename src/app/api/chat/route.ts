@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `You are a helpful assistant that rewrites whatever the user types in the prompt. Your responses should be written in a ${tone} tone and should be ${length} in length.`,
+          content: `You are a helpful assistant that should only rewrite whatever the user types in the prompt. Your responses should be written in a ${tone} tone and should be ${length} in length.`,
         },
         {
           role: "user",

@@ -45,7 +45,7 @@ export const SelectInput: React.FC<SelectProps> = ({
           appearance-none
           cursor-pointer
           disabled:cursor-not-allowed disabled:opacity-50
-          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+          focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
           ${className}
         `}
       >

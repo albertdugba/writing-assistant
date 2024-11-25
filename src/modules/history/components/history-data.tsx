@@ -32,28 +32,34 @@ export const HistoryData = (props: HistoryDataProps) => {
 
       <div className='flex-grow overflow-y-auto space-y-2'>
         <AnimatePresence initial={false}>
-          {history.map((item, idx) => (
-            <motion.div
-              key={idx}
-              layoutId={item.timestamp.toString()}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className='rounded-lg p-4 mb-4 last:mb-0 hover:bg-gray-50 transition-colors'
-            >
-              <div className='flex justify-between items-center space-x-10'>
-                <p className='flex-grow'>{item.text}</p>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => onDelete(idx)}
-                  className='text-red-500 hover:text-red-700 flex-shrink-0'
-                >
-                  <Trash2 className='w-4 h-4' />
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
+          {history
+            .sort(
+              (a, b) =>
+                new Date(b.timestamp).getTime() -
+                new Date(a.timestamp).getTime()
+            )
+            .map((item, idx) => (
+              <motion.div
+                key={idx}
+                layoutId={item.timestamp.toString()}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className='rounded-lg p-4 mb-4 last:mb-0 hover:bg-gray-50 transition-colors'
+              >
+                <div className='flex justify-between items-center space-x-10'>
+                  <p className='flex-grow'>{item.text}</p>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => onDelete(idx)}
+                    className='text-red-500 hover:text-red-700 flex-shrink-0'
+                  >
+                    <Trash2 className='w-4 h-4' />
+                  </motion.button>
+                </div>
+              </motion.div>
+            ))}
         </AnimatePresence>
       </div>
     </div>

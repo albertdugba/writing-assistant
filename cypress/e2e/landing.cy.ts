@@ -1,4 +1,9 @@
 describe("Landing page", () => {
+  const inputText = "Hello, this is a test input!";
+  const mockOutput = "This is a mock rewritten text";
+  const selectedTone = "friendly";
+  const selectedLength = "longer";
+
   beforeEach(() => {
     cy.visit("/");
   });
@@ -28,17 +33,13 @@ describe("Landing page", () => {
       .should("be.visible")
       .and("have.attr", "placeholder", "Enter your text here...");
 
-    const inputText = "Hello, this is a test input!";
-    const mockOutput = "This is a mock rewritten text";
     cy.get("textarea").type(inputText).should("have.value", inputText);
 
-    const selectedTone = "friendly";
     cy.get('[data-testid="tone-select"]')
       .should("be.visible")
       .select(selectedTone)
       .should("have.value", selectedTone);
 
-    const selectedLength = "longer";
     cy.get('[data-testid="length-select"]')
       .should("be.visible")
       .select(selectedLength)
@@ -51,14 +52,11 @@ describe("Landing page", () => {
     cy.get('[data-testid="rewrite-btn"]').click();
 
     cy.wait("@rewriteText").then((interception) => {
-      expect(interception.request.body).to.include(
-        JSON.stringify({
-          content: inputText,
-          tone: selectedTone,
-          length: selectedLength,
-        })
-      );
-
+      expect(interception.request.body).to.include({
+        content: inputText,
+        tone: selectedTone,
+        length: selectedLength,
+      });
       expect(interception.response!.statusCode).to.equal(200);
     });
   });

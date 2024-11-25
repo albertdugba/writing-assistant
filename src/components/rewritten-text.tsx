@@ -32,6 +32,7 @@ export function RewrittenTextComponent({
             </h3>
 
             <Button
+              data-testid='explain-button'
               isLoading={isLoading}
               onClick={onClick}
               className='flex items-center px-4 py-1.5 bg-primary text-white rounded-lg text-sm font-medium'
@@ -46,7 +47,11 @@ export function RewrittenTextComponent({
           {explanationText && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <div className='w-full h-[1px] bg-gray-300 mt-2' />
-              <motion.blockquote layoutId={explanationText} className='mt-3'>
+              <motion.blockquote
+                layoutId={explanationText}
+                className='mt-3'
+                data-testid='explanation-output'
+              >
                 <em>{explanationText}</em>
               </motion.blockquote>
             </motion.div>

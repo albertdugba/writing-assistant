@@ -10,6 +10,7 @@ import { HistoryItem, useRewrite } from "~/hooks/useRewrite";
 import { HistoryData } from "~/modules/history/components/history-data";
 import { InputControls } from "~/modules/controls";
 import { useExplain } from "~/hooks/useExplain";
+import { downloadHistory } from "~/lib/utils";
 
 const WritingAssistant = () => {
   const [input, setInput] = useState("");
@@ -94,7 +95,7 @@ const WritingAssistant = () => {
                 title='History'
                 history={history}
                 onDelete={onDelete}
-                onDownload={() => {}}
+                onDownload={() => downloadHistory(history)}
               />
             ) : null}
           </motion.div>
