@@ -41,7 +41,6 @@ export const HistoryData = (props: HistoryDataProps) => {
             .map((item, idx) => (
               <motion.div
                 key={idx}
-                layoutId={item.timestamp.toString()}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
