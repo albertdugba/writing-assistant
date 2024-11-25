@@ -6,9 +6,9 @@
 
 ## 🛠️ Technologies Used
 
-- **Next.js** - React framework for server-side rendering and API integration.
-- **Tailwind CSS** - Utility-first CSS framework for styling.
-- **OpenAI API SDK** - To generate responses based on user input.
+- **Next.js** 
+- **Tailwind CSS** 
+- **OpenAI API SDK** 
 
 ---
 
