@@ -4,20 +4,30 @@ import { openai } from "~/lib/open-ai";
 export async function POST(req: Request) {
   const { content, length, tone } = await req.json();
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages: [
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: `You are a helpful assistant that rewrites whatever the user types in the prompt. Your responses should be written in a ${tone} tone and should be ${length} in length.`,
+        },
+        {
+          role: "user",
+          content,
+        },
+      ],
+    });
+
+    return NextResponse.json({
+      text: completion.choices[0].message.content,
+    });
+  } catch (error: unknown) {
+    return NextResponse.json(
       {
-        role: "system",
-        content: `You are a helpful assistant that rewrites whatever the user types in the prompt. Your responses should be written in a ${tone} tone and should be ${length} in length.`,
+        error: `Failed to fetch response from OpenAI: ${error}`,
       },
-      {
-        role: "user",
-        content,
-      },
-    ],
-  });
-  return NextResponse.json({
-    text: completion.choices[0].message.content,
-  });
+      { status: 500 }
+    );
+  }
 }

@@ -55,7 +55,6 @@ export const useRewrite = ({ initialHistory = [] }: UseRewriteProps) => {
       setIsError(error);
       setIsSuccess(false);
       setIsLoading(false);
-
       alert(error);
     }
   };
